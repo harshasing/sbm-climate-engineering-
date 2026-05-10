@@ -3,7 +3,33 @@ import { Header } from '@/components/Header'
 import { categories, company } from '@/data/products'
 import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/about')({ component: AboutPage })
+export const Route = createFileRoute('/about')({
+  head: () => {
+    const title = 'About Chill Wave | S.B.M. Climate Engineering'
+    const description =
+      'Learn about Chill Wave, our engineering identity, and trusted global refrigeration partners.'
+    const urlPath = '/about'
+    const image = '/logo.webp'
+
+    return {
+      meta: [
+        { title },
+        { name: 'description', content: description },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:url', content: urlPath },
+        { property: 'og:image', content: image },
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:image', content: image },
+      ],
+      links: [{ rel: 'canonical', href: urlPath }],
+    }
+  },
+  component: AboutPage,
+})
 
 function AboutPage() {
   return (

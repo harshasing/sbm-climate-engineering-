@@ -1,6 +1,30 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/quote')({
+  head: () => {
+    const title = 'Get a Quote | Chill Wave'
+    const description =
+      'Request a custom quote for refrigeration and climate engineering solutions from Chill Wave.'
+    const urlPath = '/quote'
+    const image = '/logo.webp'
+
+    return {
+      meta: [
+        { title },
+        { name: 'description', content: description },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:url', content: urlPath },
+        { property: 'og:image', content: image },
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:image', content: image },
+      ],
+      links: [{ rel: 'canonical', href: urlPath }],
+    }
+  },
   component: RouteComponent,
 })
 

@@ -22,6 +22,47 @@ export const Route = createFileRoute('/products/$slug')({
       relatedProducts,
     }
   },
+  head: ({ loaderData, params }) => {
+    const product = loaderData?.product
+    if (!product) return {}
+
+    const title = `${product.name} | ${product.category} | Chill Wave`
+    const description = product.description
+    const image = (product.images && product.images[0]) || product.image || '/logo.webp'
+    const urlPath = `/products/${params.slug}`
+
+    return {
+      meta: [
+        { title },
+        { name: 'description', content: description },
+        { property: 'og:type', content: 'product' },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:image', content: image },
+        { property: 'og:url', content: urlPath },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:image', content: image },
+      ],
+      links: [{ rel: 'canonical', href: urlPath }],
+      scripts: [
+        {
+          type: 'application/ld+json',
+          children: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: product.name,
+            description: product.description,
+            image: product.images && product.images.length > 0 ? product.images : [image],
+            category: product.category,
+            brand: { '@type': 'Brand', name: 'Chill Wave' },
+            url: urlPath,
+          }),
+        },
+      ],
+    }
+  },
   component: RouteComponent,
 })
 

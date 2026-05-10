@@ -22,6 +22,46 @@ export const Route = createFileRoute('/blog/$slug')({
       relatedBlogs,
     }
   },
+  head: ({ loaderData, params }) => {
+    const blog = loaderData?.blog
+    if (!blog) return {}
+
+    const title = `${blog.title} | Chill Wave Blog`
+    const description = blog.excerpt
+    const urlPath = `/blog/${params.slug}`
+
+    return {
+      meta: [
+        { title },
+        { name: 'description', content: description },
+        { property: 'og:type', content: 'article' },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:image', content: blog.image },
+        { property: 'og:url', content: urlPath },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:image', content: blog.image },
+      ],
+      links: [{ rel: 'canonical', href: urlPath }],
+      scripts: [
+        {
+          type: 'application/ld+json',
+          children: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: blog.title,
+            description: blog.excerpt,
+            image: [blog.image],
+            datePublished: blog.date,
+            author: { '@type': 'Person', name: blog.author },
+            mainEntityOfPage: { '@type': 'WebPage', '@id': urlPath },
+          }),
+        },
+      ],
+    }
+  },
   component: RouteComponent,
 })
 

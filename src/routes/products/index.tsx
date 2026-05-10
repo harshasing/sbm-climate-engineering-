@@ -13,6 +13,30 @@ const productSearchSchema = z.object({
 })
 
 export const Route = createFileRoute('/products/')({
+  head: () => {
+    const title = 'Products | Chill Wave'
+    const description =
+      'Browse evaporators, condensing units, condensers, ventilation systems, and industrial climate solutions.'
+    const urlPath = '/products'
+    const image = '/products/dd-series-evaporator.webp'
+
+    return {
+      meta: [
+        { title },
+        { name: 'description', content: description },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:url', content: urlPath },
+        { property: 'og:image', content: image },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:image', content: image },
+      ],
+      links: [{ rel: 'canonical', href: urlPath }],
+    }
+  },
   validateSearch: (search) => productSearchSchema.parse(search),
   component: RouteComponent,
 })
@@ -204,4 +228,3 @@ function RouteComponent() {
     </Suspense>
   )
 }
-

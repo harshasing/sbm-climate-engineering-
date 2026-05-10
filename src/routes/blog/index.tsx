@@ -4,7 +4,33 @@ import { Header } from '@/components/Header'
 import { blogs } from '@/data/blogs'
 import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/blog/')({ component: BlogPage })
+export const Route = createFileRoute('/blog/')({
+  head: () => {
+    const title = 'Blog | Chill Wave'
+    const description =
+      'Read insights on refrigeration technology, climate engineering, and industrial cooling.'
+    const urlPath = '/blog'
+    const image = '/blogs/the-future-of-industrial-cold-storage.webp'
+
+    return {
+      meta: [
+        { title },
+        { name: 'description', content: description },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:url', content: urlPath },
+        { property: 'og:image', content: image },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:image', content: image },
+      ],
+      links: [{ rel: 'canonical', href: urlPath }],
+    }
+  },
+  component: BlogPage,
+})
 
 function BlogPage() {
   return (

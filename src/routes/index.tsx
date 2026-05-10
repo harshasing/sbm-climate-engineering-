@@ -7,7 +7,33 @@ import { categories, products } from '@/data/products'
 import { services } from '@/data/services'
 import { createFileRoute, Link } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/')({ component: Home })
+export const Route = createFileRoute('/')({
+  head: () => {
+    const title = 'Chill Wave | Precision Engineering for Thermal Excellence'
+    const description =
+      'Industrial refrigeration, cold storage, and climate engineering solutions by S.B.M. Climate Engineering.'
+    const urlPath = '/'
+    const image = '/images/hero-bg.webp'
+
+    return {
+      meta: [
+        { title },
+        { name: 'description', content: description },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:url', content: urlPath },
+        { property: 'og:image', content: image },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:image', content: image },
+      ],
+      links: [{ rel: 'canonical', href: urlPath }],
+    }
+  },
+  component: Home,
+})
 
 function Home() {
   const featuredProducts = products.filter((p) => p.featured).slice(0, 4)
