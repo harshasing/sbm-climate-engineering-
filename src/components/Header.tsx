@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isMoreOpen, setIsMoreOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const navigate = useNavigate()
 
@@ -47,32 +46,27 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <div className="relative">
+            <div className="relative group">
               <button
                 type="button"
-                onClick={() => setIsMoreOpen((prev) => !prev)}
                 className="text-foreground/80 hover:text-primary transition-all font-semibold"
               >
                 More
               </button>
-              {isMoreOpen && (
-                <div className="absolute right-0 top-9 min-w-44 rounded-xl border border-border bg-white shadow-lg p-2 z-50">
-                  <Link
-                    to="/opportunity"
-                    className="block px-3 py-2 rounded-md text-sm font-semibold text-foreground/80 hover:bg-secondary hover:text-primary"
-                    onClick={() => setIsMoreOpen(false)}
-                  >
-                    Opportunity
-                  </Link>
-                  <Link
-                    to="/contacts"
-                    className="block px-3 py-2 rounded-md text-sm font-semibold text-foreground/80 hover:bg-secondary hover:text-primary"
-                    onClick={() => setIsMoreOpen(false)}
-                  >
-                    Contacts
-                  </Link>
-                </div>
-              )}
+              <div className="absolute right-0 top-9 min-w-44 rounded-xl border border-border bg-white shadow-lg p-2 z-50 opacity-0 invisible translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
+                <Link
+                  to="/opportunity"
+                  className="block px-3 py-2 rounded-md text-sm font-semibold text-foreground/80 hover:bg-secondary hover:text-primary"
+                >
+                  Opportunity
+                </Link>
+                <Link
+                  to="/contacts"
+                  className="block px-3 py-2 rounded-md text-sm font-semibold text-foreground/80 hover:bg-secondary hover:text-primary"
+                >
+                  Contacts
+                </Link>
+              </div>
             </div>
           </nav>
 
