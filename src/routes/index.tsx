@@ -91,7 +91,7 @@ function Home() {
                   to="/quote"
                   className="px-12 py-5 bg-white text-black rounded-full font-extrabold text-xl hover:bg-gray-100 transition-all active:scale-95 shadow-xl"
                 >
-                  Get a Free Quote
+                  Contact Us
                 </Link>
               </div>
             </div>
