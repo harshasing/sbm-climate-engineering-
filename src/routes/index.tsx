@@ -110,39 +110,35 @@ function Home() {
               {[
                 {
                   name: 'Tecumseh',
-                  url: 'https://d363y1u90kc5w6.cloudfront.net/userfiles/tecumseh-logo-header.png',
+                  url: '/trusted-partners/tecumseh.webp',
                 },
                 {
                   name: 'Embraco',
-                  url: 'https://www.embraco.com/images/logo-embraco.svg',
-                },
-                {
-                  name: 'VALUE',
-                  url: 'https://www.worldvalue.cn/public/home/images/logo.jpeg',
+                  url: '/trusted-partners/embraco.webp',
                 },
                 {
                   name: 'Dry All',
-                  url: 'https://dryall.net/wp-content/uploads/2020/01/new-logo.jpeg',
+                  url: '/trusted-partners/dry-all.webp',
                 },
                 {
                   name: 'Sub-Zero',
-                  url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sub-Zero_logo.svg/1024px-Sub-Zero_logo.svg.png',
+                  url: '/trusted-partners/sub-zero.webp',
                 },
                 {
                   name: 'Östberg',
-                  url: 'https://ostberg.com/wp-content/uploads/2015/06/Oestberg_logo_web_default-3.png',
+                  url: '/trusted-partners/ostberg.webp',
                 },
                 {
                   name: 'Danfoss',
-                  url: 'https://www.danfoss.com/static/images/new-logo.svg',
+                  url: '/trusted-partners/danfoss.webp',
                 },
                 {
                   name: 'Copeland',
-                  url: 'https://cdn.cookielaw.org/logos/c4981cf5-edee-4b74-8842-608d0ceffa0b/0190e511-7dd5-7067-81e6-ed1a0a982cc2/6cd867d2-73ec-4fba-acaf-4829c37f698a/Copeland_Large_Logo_RGB_Blue.png',
+                  url: '/trusted-partners/copeland.webp',
                 },
                 {
                   name: 'Hicool',
-                  url: 'https://www.hicoolfans.com/images/logo.jpeg',
+                  url: '/trusted-partners/hicool.webp',
                 },
               ].map((brand) => (
                 <img
