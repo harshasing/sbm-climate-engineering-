@@ -37,6 +37,8 @@ export function Header() {
               { to: '/products', label: 'Products' },
               { to: '/about', label: 'About' },
               { to: '/blog', label: 'Blog' },
+              { to: '/opportunity', label: 'Opportunity' },
+              { to: '/contacts', label: 'Contacts' },
             ].map((link) => (
               <Link
                 key={link.to}
@@ -120,6 +122,8 @@ export function Header() {
               { to: '/products', label: 'Products' },
               { to: '/about', label: 'About' },
               { to: '/blog', label: 'Blog' },
+              { to: '/opportunity', label: 'Opportunity' },
+              { to: '/contacts', label: 'Contacts' },
             ].map((link) => (
               <Link
                 key={link.to}

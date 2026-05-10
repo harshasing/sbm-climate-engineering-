@@ -111,6 +111,45 @@ function Home() {
           imageClassName="h-8 md:h-10 w-auto object-contain transition-all duration-300"
         />
 
+        {/* Opportunity & Contacts */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <article className="rounded-3xl bg-zinc-950 p-10 text-white">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4">
+                New Page
+              </p>
+              <h2 className="text-4xl font-black mb-4">Opportunity</h2>
+              <p className="text-zinc-300 text-lg leading-relaxed mb-8">
+                Explore careers, channel partnerships, and collaboration models
+                with our climate engineering team.
+              </p>
+              <Link
+                to="/opportunity"
+                className="inline-block px-7 py-3 bg-primary text-primary-foreground rounded-lg font-bold hover:bg-primary/90 transition"
+              >
+                View Opportunities
+              </Link>
+            </article>
+
+            <article className="rounded-3xl bg-white p-10 border border-border">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4">
+                New Page
+              </p>
+              <h2 className="text-4xl font-black text-foreground mb-4">Contacts</h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                Find direct contact details for technical inquiries, sales,
+                support, and project planning.
+              </p>
+              <Link
+                to="/contacts"
+                className="inline-block px-7 py-3 border-2 border-primary text-primary rounded-lg font-bold hover:bg-primary hover:text-primary-foreground transition"
+              >
+                Open Contacts
+              </Link>
+            </article>
+          </div>
+        </section>
+
         {/* Featured Products Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="mb-12">
