@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isMoreOpen, setIsMoreOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const navigate = useNavigate()
 
@@ -31,14 +32,12 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-7">
             {[
               { to: '/', label: 'Home' },
               { to: '/products', label: 'Products' },
               { to: '/about', label: 'About' },
               { to: '/blog', label: 'Blog' },
-              { to: '/opportunity', label: 'Opportunity' },
-              { to: '/contacts', label: 'Contacts' },
             ].map((link) => (
               <Link
                 key={link.to}
@@ -48,6 +47,33 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setIsMoreOpen((prev) => !prev)}
+                className="text-foreground/80 hover:text-primary transition-all font-semibold"
+              >
+                More
+              </button>
+              {isMoreOpen && (
+                <div className="absolute right-0 top-9 min-w-44 rounded-xl border border-border bg-white shadow-lg p-2 z-50">
+                  <Link
+                    to="/opportunity"
+                    className="block px-3 py-2 rounded-md text-sm font-semibold text-foreground/80 hover:bg-secondary hover:text-primary"
+                    onClick={() => setIsMoreOpen(false)}
+                  >
+                    Opportunity
+                  </Link>
+                  <Link
+                    to="/contacts"
+                    className="block px-3 py-2 rounded-md text-sm font-semibold text-foreground/80 hover:bg-secondary hover:text-primary"
+                    onClick={() => setIsMoreOpen(false)}
+                  >
+                    Contacts
+                  </Link>
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Search Bar */}
