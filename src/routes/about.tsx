@@ -1,5 +1,6 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { TrustedPartnersSection } from '@/components/TrustedPartners'
 import { categories, company } from '@/data/products'
 import { createFileRoute } from '@tanstack/react-router'
 
@@ -246,60 +247,14 @@ function AboutPage() {
         </section>
 
         {/* Global Partners Section */}
-        <section className="bg-zinc-50 py-20 border-y border-zinc-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl font-bold text-zinc-400 uppercase tracking-widest mb-12">
-              Our Trusted Global Partners
-            </h2>
-            <div className="flex flex-wrap justify-center items-center gap-12 opacity-80">
-              {[
-                {
-                  name: 'Tecumseh',
-                  url: '/trusted-partners/tecumseh.webp',
-                },
-                {
-                  name: 'Embraco',
-                  url: '/trusted-partners/embraco.webp',
-                },
-                {
-                  name: 'Dry All',
-                  url: '/trusted-partners/dry-all.webp',
-                },
-                {
-                  name: 'Sub-Zero',
-                  url: '/trusted-partners/sub-zero.webp',
-                },
-                {
-                  name: 'Östberg',
-                  url: '/trusted-partners/ostberg.webp',
-                },
-                {
-                  name: 'Danfoss',
-                  url: '/trusted-partners/danfoss.webp',
-                },
-                {
-                  name: 'Copeland',
-                  url: '/trusted-partners/copeland.webp',
-                },
-                {
-                  name: 'Hicool',
-                  url: '/trusted-partners/hicool.webp',
-                },
-              ].map((brand) => (
-                <img
-                  key={brand.name}
-                  src={brand.url}
-                  alt={brand.name}
-                  className={`h-10 md:h-12 w-auto object-contain transition-all duration-300 ${
-                    brand.name === 'Embraco'
-                      ? 'bg-zinc-900/80 p-2 rounded-md'
-                      : ''
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        <TrustedPartnersSection
+          heading="Our Trusted Global Partners"
+          sectionClassName="bg-zinc-50 py-20 border-y border-zinc-200"
+          containerClassName="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          headingClassName="text-2xl font-bold text-zinc-400 uppercase tracking-widest mb-12"
+          logosClassName="flex flex-wrap justify-center items-center gap-12 opacity-80"
+          imageClassName="h-10 md:h-12 w-auto object-contain transition-all duration-300"
+        />
 
         {/* Contact CTA */}
         <section className="py-24 relative overflow-hidden">

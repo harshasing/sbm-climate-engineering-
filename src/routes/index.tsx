@@ -2,6 +2,7 @@ import { BlogCard } from '@/components/BlogCard'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { ProductCard } from '@/components/ProductCard'
+import { TrustedPartnersSection } from '@/components/TrustedPartners'
 import { blogs } from '@/data/blogs'
 import { categories, products } from '@/data/products'
 import { services } from '@/data/services'
@@ -101,56 +102,14 @@ function Home() {
         </section>
 
         {/* Global Partners Section */}
-        <section className="bg-white py-12 border-b border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-sm font-bold text-zinc-400 uppercase tracking-widest mb-8">
-              Trusted by Industry Leaders & Global Partners
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
-              {[
-                {
-                  name: 'Tecumseh',
-                  url: '/trusted-partners/tecumseh.webp',
-                },
-                {
-                  name: 'Embraco',
-                  url: '/trusted-partners/embraco.webp',
-                },
-                {
-                  name: 'Dry All',
-                  url: '/trusted-partners/dry-all.webp',
-                },
-                {
-                  name: 'Sub-Zero',
-                  url: '/trusted-partners/sub-zero.webp',
-                },
-                {
-                  name: 'Östberg',
-                  url: '/trusted-partners/ostberg.webp',
-                },
-                {
-                  name: 'Danfoss',
-                  url: '/trusted-partners/danfoss.webp',
-                },
-                {
-                  name: 'Copeland',
-                  url: '/trusted-partners/copeland.webp',
-                },
-                {
-                  name: 'Hicool',
-                  url: '/trusted-partners/hicool.webp',
-                },
-              ].map((brand) => (
-                <img
-                  key={brand.name}
-                  src={brand.url}
-                  alt={brand.name}
-                  className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        <TrustedPartnersSection
+          heading="Trusted by Industry Leaders & Global Partners"
+          sectionClassName="bg-white py-12 border-b border-border"
+          containerClassName="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          headingClassName="text-center text-sm font-bold text-zinc-400 uppercase tracking-widest mb-8"
+          logosClassName="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70"
+          imageClassName="h-8 md:h-10 w-auto object-contain transition-all duration-300"
+        />
 
         {/* Featured Products Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
