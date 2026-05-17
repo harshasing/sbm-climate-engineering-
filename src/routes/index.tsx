@@ -42,6 +42,16 @@ function Home() {
   const allProducts = products.slice(0, 8)
   const featuredBlogs = blogs.filter((b) => b.featured).slice(0, 3)
 
+  const categoryBackgroundImage = (categoryId: string) => {
+    const categoryProducts = products.filter((p) => p.categoryId === categoryId)
+    if (!categoryProducts.length) return '/logo.webp'
+
+    const seed = categoryId
+      .split('')
+      .reduce((sum, char, index) => sum + char.charCodeAt(0) * (index + 1), 0)
+    return categoryProducts[seed % categoryProducts.length].image
+  }
+
   return (
     <>
       <Header />
@@ -205,8 +215,16 @@ function Home() {
                 to="/products"
                 search={{ category: category.id }}
               >
-                <div className="bg-secondary p-6 rounded-lg text-center hover:bg-primary hover:text-primary-foreground transition cursor-pointer">
-                  <p className="font-bold text-foreground hover:text-primary-foreground">
+                <div
+                  className="relative min-h-56 p-8 rounded-xl text-center transition cursor-pointer overflow-hidden group flex items-end justify-center"
+                  style={{
+                    backgroundImage: `url(${categoryBackgroundImage(category.id)})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                >
+                  <div className="absolute inset-0 bg-black/50 group-hover:bg-black/35 transition" />
+                  <p className="relative z-10 text-xl font-extrabold text-white">
                     {category.name}
                   </p>
                 </div>
