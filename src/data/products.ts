@@ -24,6 +24,7 @@ export const categories = [
           {
             id: 'DL',
             name: 'DL Series – Fresh Storage',
+        images: ['/products/whatsapp/00003059-PHOTO-2026-05-18-22-29-11.jpg'],
             temperature_range: '-5°C to +5°C',
             fin_spacing_mm: 4.5,
             refrigerant: 'R22',
@@ -257,6 +258,7 @@ export const categories = [
           {
             id: 'DD',
             name: 'DD Series – Refrigerated Storage',
+        images: ['/products/whatsapp/00003059-PHOTO-2026-05-18-22-29-11.jpg'],
             temperature_range: '-15°C to -20°C',
             fin_spacing_mm: 6,
             refrigerant: 'R22',
@@ -762,12 +764,13 @@ export const categories = [
       {
         id: 'sub_02_01',
         name: 'L Type A – Box Type Condensing Units (Side Air Blow)',
-        images: ['/products/l-type-a-box-type-condensing-units-side-air-blow.webp'],
+        images: ['/products/l-type-a-box-type-condensing-units-side-air-blow.webp', '/products/whatsapp/00003057-PHOTO-2026-05-18-22-29-09.jpg', '/products/whatsapp/00003060-PHOTO-2026-05-18-22-29-11.jpg'],
         description:
           'Compact box-type condensing units with side air discharge for small to medium cold rooms.',
         series: [
           {
             name: 'Copeland Scroll – 3-Phase',
+        images: ['/products/whatsapp/00003071-PHOTO-2026-05-18-22-29-14.jpg', '/products/whatsapp/00003075-PHOTO-2026-05-18-22-29-15.jpg'],
             refrigerant: 'R404A',
             power_supply: '380V/3PH/50Hz',
             fin_spacing_mm: 1.8,
@@ -1064,7 +1067,7 @@ export const categories = [
       {
         id: 'sub_03_01',
         name: 'FNH Series Condenser',
-        images: ['/products/fnh-series-condenser.webp'],
+        images: ['/products/fnh-series-condenser.webp', '/products/whatsapp/00003039-PHOTO-2026-05-18-22-21-19.jpg'],
         description:
           'Horizontal air-cooled condensers for refrigeration systems.',
         products: [
@@ -1753,9 +1756,11 @@ export const categories = [
       {
         id: 'sub_04_04',
         name: 'Centrifugal Fans',
+        images: ['/products/whatsapp/00003034-PHOTO-2026-05-18-22-21-18.jpg', '/products/whatsapp/00003036-PHOTO-2026-05-18-22-21-18.jpg'],
         subcategories: [
           {
             name: 'Low Noise Multi-blade Centrifugal Fan (11-62 Series)',
+        images: ['/products/whatsapp/00003034-PHOTO-2026-05-18-22-21-18.jpg', '/products/whatsapp/00003035-PHOTO-2026-05-18-22-21-18.jpg'],
             description:
               'Front forward centrifugal fans. IP54, F-class insulation. Energy-saving, large air volume, low noise.',
             products: [
@@ -1803,6 +1808,7 @@ export const categories = [
           },
           {
             name: 'High Pressure Centrifugal Fan (9-19 Series)',
+        images: ['/products/whatsapp/00003036-PHOTO-2026-05-18-22-21-18.jpg', '/products/whatsapp/00003037-PHOTO-2026-05-18-22-21-19.jpg'],
             description:
               'Used in metallurgy, glass, pottery, and material transport. High pressure, high efficiency.',
             products: [
@@ -1843,9 +1849,11 @@ export const categories = [
       {
         id: 'sub_04_05',
         name: 'Inline Duct Fans',
+        images: ['/products/whatsapp/00003033-PHOTO-2026-05-18-22-21-17.jpg'],
         subcategories: [
           {
             name: 'Mixed Flow Inline Duct Fan (HF Series)',
+        images: ['/products/whatsapp/00003033-PHOTO-2026-05-18-22-21-17.jpg'],
             description:
               'NMB ball bearings, high airflow and pressure simultaneously. Strong metal construction.',
             products: [
@@ -2358,6 +2366,7 @@ export const categories = [
       {
         id: 'sub_05_01',
         name: 'Heat Recovery Ventilator VT501',
+        images: ['/products/whatsapp/00003041-PHOTO-2026-05-18-22-22-48.jpg'],
         description:
           'Through-wall fan with ceramic regenerative heat exchanger. Up to 90% heat recovery. WiFi control via Tuya Smart app. Multiple units sync for higher efficiency.',
         specifications: {
@@ -2404,6 +2413,7 @@ export const categories = [
       {
         id: 'sub_05_02',
         name: 'Heat Recovery Ventilator VT125',
+        images: ['/products/whatsapp/00003042-PHOTO-2026-05-18-22-22-48.jpg'],
         description:
           'Wall-mounted heat recovery ventilator with ceramic core and auto shutter. Up to 90% efficiency.',
         specifications: {
@@ -2722,6 +2732,7 @@ export const categories = [
       {
         id: 'sub_06_01',
         name: 'Small Q Series Air Curtain (FM-125 Series)',
+        images: ['/products/whatsapp/00003040-PHOTO-2026-05-18-22-22-48.jpg', '/products/whatsapp/00003038-PHOTO-2026-05-18-22-21-19.jpg'],
         description:
           'Compact air curtain for standard door heights. Air speed 9–11 m/s.',
         products: [
@@ -3405,6 +3416,69 @@ export const categories = [
         ],
       },
     ],
+  },
+  {
+    id: 'cat_06',
+    name: 'Refrigerants',
+    subcategories: [
+      {
+        id: 'ref_01',
+        name: 'R134a Refrigerant',
+        images: ['/products/whatsapp/00003021-PHOTO-2026-05-18-22-11-45.jpg', '/products/whatsapp/00003023-PHOTO-2026-05-18-22-11-46.jpg', '/products/whatsapp/00003028-PHOTO-2026-05-18-22-11-47.jpg'],
+      },
+      {
+        id: 'ref_02',
+        name: 'R404A Refrigerant',
+        images: ['/products/whatsapp/00003022-PHOTO-2026-05-18-22-11-46.jpg', '/products/whatsapp/00003027-PHOTO-2026-05-18-22-11-47.jpg'],
+      },
+      {
+        id: 'ref_03',
+        name: 'R410A Refrigerant',
+        images: ['/products/whatsapp/00003024-PHOTO-2026-05-18-22-11-46.jpg', '/products/whatsapp/00003029-PHOTO-2026-05-18-22-11-48.jpg'],
+      },
+      {
+        id: 'ref_04',
+        name: 'R407C Refrigerant',
+        images: ['/products/whatsapp/00003025-PHOTO-2026-05-18-22-11-47.jpg'],
+      },
+      {
+        id: 'ref_05',
+        name: 'R32 Refrigerant',
+        images: ['/products/whatsapp/00003026-PHOTO-2026-05-18-22-11-47.jpg'],
+      }
+    ]
+  },
+  {
+    id: 'cat_07',
+    name: 'Copper & Brazing',
+    subcategories: [
+      {
+        id: 'copper_01',
+        name: 'Copper Y-Joints / Refnet Joints',
+        images: ['/products/whatsapp/00003064-PHOTO-2026-05-18-22-29-13.jpg', '/products/whatsapp/00003065-PHOTO-2026-05-18-22-29-13.jpg', '/products/whatsapp/00003068-PHOTO-2026-05-18-22-29-14.jpg'],
+      },
+      {
+        id: 'copper_02',
+        name: 'Copper Tube Coil',
+        images: ['/products/whatsapp/00003074-PHOTO-2026-05-18-22-29-15.jpg'],
+      },
+      {
+        id: 'brazing_01',
+        name: 'Harris Brazing Alloys',
+        images: ['/products/whatsapp/00003052-PHOTO-2026-05-18-22-28-25.jpg', '/products/whatsapp/00003066-PHOTO-2026-05-18-22-29-13.jpg', '/products/whatsapp/00003067-PHOTO-2026-05-18-22-29-13.jpg'],
+      }
+    ]
+  },
+  {
+    id: 'cat_08',
+    name: 'Valves & Controls',
+    subcategories: [
+      {
+        id: 'valve_01',
+        name: 'Thermostatic Expansion Valves (Danfoss)',
+        images: ['/products/whatsapp/00003054-PHOTO-2026-05-18-22-29-08.jpg', '/products/whatsapp/00003055-PHOTO-2026-05-18-22-29-08.jpg', '/products/whatsapp/00003056-PHOTO-2026-05-18-22-29-08.jpg'],
+      }
+    ]
   },
 ]
 
