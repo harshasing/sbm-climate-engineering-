@@ -272,13 +272,6 @@ function AboutPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-white mb-12">
               <div>
                 <p className="text-xs uppercase tracking-widest opacity-50 mb-1">
-                  Direct Line
-                </p>
-                <p className="text-xl font-bold">{company.phone[0]}</p>
-              </div>
-              <div className="hidden sm:block w-px h-10 bg-white/10" />
-              <div>
-                <p className="text-xs uppercase tracking-widest opacity-50 mb-1">
                   Engineering Email
                 </p>
                 <p className="text-xl font-bold">{company.email}</p>

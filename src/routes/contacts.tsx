@@ -28,7 +28,6 @@ export const Route = createFileRoute('/contacts')({
 })
 
 function ContactsPage() {
-  const phoneList = Array.isArray(company.phone) ? company.phone : [company.phone]
   const emailList = Array.isArray(company.email) ? company.email : [company.email]
 
   return (
@@ -45,13 +44,7 @@ function ContactsPage() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="rounded-2xl bg-white border border-border p-8">
-              <h2 className="text-xl font-bold mb-2">Phone</h2>
-              {phoneList.map((phone) => (
-                <p key={phone} className="text-muted-foreground mb-1">{phone}</p>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="rounded-2xl bg-white border border-border p-8">
               <h2 className="text-xl font-bold mb-2">Email</h2>
               {emailList.map((email) => (

@@ -74,12 +74,6 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex flex-col">
-                <span className="text-[10px] uppercase opacity-50">Phone</span>
-                <span className="font-medium text-white">
-                  {company.phone[0]}
-                </span>
-              </li>
-              <li className="flex flex-col">
                 <span className="text-[10px] uppercase opacity-50">
                   Address
                 </span>

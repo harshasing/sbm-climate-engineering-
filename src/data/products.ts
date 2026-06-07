@@ -5,7 +5,6 @@ export const company = {
   managingDirector: 'E.R. Harsh Singh',
   address: 'Nayabazar-16, Kathmandu, Nepal',
   email: 'sbmclimate@gmail.com',
-  phone: ['+977-9866041811', '+977-9802852896'],
   website: 'chillwaves.com.np',
 }
 

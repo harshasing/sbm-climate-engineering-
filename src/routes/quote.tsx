@@ -214,11 +214,7 @@ function RouteComponent() {
           </form>
 
           {/* Additional Info */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <h3 className="font-bold text-foreground mb-2">Phone</h3>
-              <p className="text-muted-foreground">{company.phone[0]}</p>
-            </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="text-center">
               <h3 className="font-bold text-foreground mb-2">Email</h3>
               <p className="text-muted-foreground">{company.email}</p>
