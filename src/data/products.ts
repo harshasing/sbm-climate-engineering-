@@ -3,8 +3,7 @@ export const company = {
   brand: 'Chill Wave',
   tagline: 'Precision Engineering for Thermal Excellence',
   managingDirector: 'E.R. Harsh Singh',
-  address: 'Nayabazar-16, Kathmandu, Nepal',
-  email: 'sbmclimate@gmail.com',
+  email: 'support@chillwaves.in',
   website: 'chillwaves.com.np',
 }
 

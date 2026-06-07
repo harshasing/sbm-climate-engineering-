@@ -91,11 +91,10 @@ function AboutPage() {
                   and reliable commercial cooling.
                 </p>
                 <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                  Operating from our headquarters in {company.address}, we have
-                  established ourselves as the leading authority in Nepal&apos;s
-                  climate engineering sector, delivering high-performance
-                  solutions for cold storage, industrial freezing, and precise
-                  temperature control.
+                  We have established ourselves as the leading authority in
+                  Nepal&apos;s climate engineering sector, delivering
+                  high-performance solutions for cold storage, industrial
+                  freezing, and precise temperature control.
                 </p>
                 <div className="grid grid-cols-2 gap-8 pt-8 border-t border-slate-100">
                   <div>

@@ -44,16 +44,12 @@ function ContactsPage() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
             <div className="rounded-2xl bg-white border border-border p-8">
               <h2 className="text-xl font-bold mb-2">Email</h2>
               {emailList.map((email) => (
                 <p key={email} className="text-muted-foreground mb-1">{email}</p>
               ))}
-            </div>
-            <div className="rounded-2xl bg-white border border-border p-8">
-              <h2 className="text-xl font-bold mb-2">Address</h2>
-              <p className="text-muted-foreground">{company.address}</p>
             </div>
           </div>
         </section>
