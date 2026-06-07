@@ -30,7 +30,7 @@ export const Route = createFileRoute('/quote')({
 
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { company, categories } from '@/data/products'
+import { company, categories, superCategories } from '@/data/products'
 import { useState } from 'react'
 
 function RouteComponent() {
@@ -181,11 +181,18 @@ function RouteComponent() {
                 className="w-full px-4 py-3 border border-border rounded-lg bg-white text-foreground focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
               >
                 <option value="">Select a category</option>
-                {categories.map((cat) => (
-                  <option key={cat.id} value={cat.id}>
-                    {cat.name}
-                  </option>
-                ))}
+                {superCategories.map((superCat) => {
+                  const subCats = categories.filter((cat) => cat.superCategoryId === superCat.id)
+                  return (
+                    <optgroup key={superCat.id} label={superCat.name}>
+                      {subCats.map((cat) => (
+                        <option key={cat.id} value={cat.id}>
+                          {cat.name}
+                        </option>
+                      ))}
+                    </optgroup>
+                  )
+                })}
               </select>
             </div>
 

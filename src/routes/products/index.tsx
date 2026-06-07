@@ -3,10 +3,11 @@ import { z } from 'zod'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { ProductCard } from '@/components/ProductCard'
-import { categories, products } from '@/data/products'
+import { categories, products, superCategories } from '@/data/products'
 import { Suspense } from 'react'
 
 const productSearchSchema = z.object({
+  superCategory: z.string().optional(),
   category: z.string().optional(),
   page: z.number().catch(1).optional(),
   q: z.string().optional(),
@@ -42,18 +43,21 @@ export const Route = createFileRoute('/products/')({
 })
 
  function ProductsContent() {
-  const { category: selectedCategory, page = 1, q: searchItem } = Route.useSearch()
+  const { superCategory: selectedSuperCategory, category: selectedCategory, page = 1, q: searchItem } = Route.useSearch()
   const navigate = useNavigate({ from: Route.fullPath })
   const pageSize = 12
 
   const filteredProducts = products.filter((p) => {
+    const matchesSuperCategory = selectedSuperCategory
+      ? categories.find((c) => c.id === p.categoryId)?.superCategoryId === selectedSuperCategory
+      : true
     const matchesCategory = selectedCategory ? p.categoryId === selectedCategory : true
     const matchesSearch = searchItem
       ? p.name.toLowerCase().includes(searchItem.toLowerCase()) ||
         p.description.toLowerCase().includes(searchItem.toLowerCase()) ||
         (p.model && p.model.toLowerCase().includes(searchItem.toLowerCase()))
       : true
-    return matchesCategory && matchesSearch
+    return matchesSuperCategory && matchesCategory && matchesSearch
   })
 
   const totalPages = Math.ceil(filteredProducts.length / pageSize)
@@ -101,30 +105,76 @@ export const Route = createFileRoute('/products/')({
         </section>
 
         {/* Minimal Filter */}
-        <section className="sticky top-20 z-40 bg-white/90 backdrop-blur-sm border-y border-zinc-50 py-4">
+        <section className="sticky top-20 z-40 bg-white/90 backdrop-blur-sm border-y border-zinc-100 py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-8 overflow-x-auto no-scrollbar">
+            {/* Super Category Filter Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pb-4">
               <Link
                 to="/products"
-                search={{ category: undefined, page: 1 }}
-                className={`text-xs font-bold uppercase tracking-widest transition-colors ${
-                  !selectedCategory ? 'text-primary' : 'text-zinc-400 hover:text-zinc-600'
+                search={{ superCategory: undefined, category: undefined, page: 1 }}
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                  !selectedSuperCategory && !selectedCategory
+                    ? 'bg-zinc-950 text-white shadow-md'
+                    : 'bg-zinc-50 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800'
                 }`}
               >
-                All
+                All Products
               </Link>
-              {categories.map((cat) => (
+              {superCategories.map((sc) => (
+                <Link
+                  key={sc.id}
+                  to="/products"
+                  search={{ superCategory: sc.id, category: undefined, page: 1 }}
+                  className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                    selectedSuperCategory === sc.id && !selectedCategory
+                      ? 'bg-primary text-primary-foreground shadow-md'
+                      : 'bg-zinc-50 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800'
+                  }`}
+                >
+                  {sc.name}
+                </Link>
+              ))}
+            </div>
+
+            {/* Specific Subcategory Filters */}
+            <div className="flex flex-wrap items-center gap-2 mt-2 pt-4 border-t border-zinc-100">
+              <span className="text-[10px] font-extrabold uppercase tracking-widest text-zinc-400 mr-2">
+                Sub-Filters:
+              </span>
+              {(selectedSuperCategory 
+                ? categories.filter(c => c.superCategoryId === selectedSuperCategory)
+                : categories
+              ).map((cat) => (
                 <Link
                   key={cat.id}
                   to="/products"
-                  search={{ category: cat.id, page: 1 }}
-                  className={`text-xs font-bold uppercase tracking-widest whitespace-nowrap transition-colors ${
-                    selectedCategory === cat.id ? 'text-primary' : 'text-zinc-400 hover:text-zinc-600'
+                  search={{ 
+                    superCategory: cat.superCategoryId, 
+                    category: cat.id, 
+                    page: 1 
+                  }}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 border ${
+                    selectedCategory === cat.id
+                      ? 'bg-zinc-950 border-zinc-950 text-white'
+                      : 'bg-white border-zinc-200 text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900'
                   }`}
                 >
                   {cat.name}
                 </Link>
               ))}
+              {selectedCategory && (
+                <Link
+                  to="/products"
+                  search={{ 
+                    superCategory: selectedSuperCategory, 
+                    category: undefined, 
+                    page: 1 
+                  }}
+                  className="text-xs font-bold text-red-500 hover:text-red-700 transition-colors pl-2"
+                >
+                  Clear filter
+                </Link>
+              )}
             </div>
           </div>
         </section>

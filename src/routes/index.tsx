@@ -4,7 +4,7 @@ import { Header } from '@/components/Header'
 import { ProductCard } from '@/components/ProductCard'
 import { TrustedPartnersSection } from '@/components/TrustedPartners'
 import { blogs } from '@/data/blogs'
-import { categories, products } from '@/data/products'
+import { categories, products, superCategories } from '@/data/products'
 import { services } from '@/data/services'
 import { createFileRoute, Link } from '@tanstack/react-router'
 
@@ -50,6 +50,18 @@ function Home() {
       .split('')
       .reduce((sum, char, index) => sum + char.charCodeAt(0) * (index + 1), 0)
     return categoryProducts[seed % categoryProducts.length].image
+  }
+
+  const superCategoryBackgroundImage = (superCategoryId: string) => {
+    const subCats = categories.filter((c) => c.superCategoryId === superCategoryId)
+    const categoryIds = subCats.map((c) => c.id)
+    const superCatProducts = products.filter((p) => categoryIds.includes(p.categoryId))
+    if (!superCatProducts.length) return '/logo.webp'
+
+    const seed = superCategoryId
+      .split('')
+      .reduce((sum, char, index) => sum + char.charCodeAt(0) * (index + 1), 0)
+    return superCatProducts[seed % superCatProducts.length].image
   }
 
   return (
@@ -207,29 +219,46 @@ function Home() {
               Browse our comprehensive product range
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-            {topCategories.map((category) => (
-              <Link
-                key={category.id}
-                // hrtoef={`/products?category=${category.id}`}
-                to="/products"
-                search={{ category: category.id }}
-              >
-                <div
-                  className="relative min-h-56 p-8 rounded-xl text-center transition cursor-pointer overflow-hidden group flex items-end justify-center"
-                  style={{
-                    backgroundImage: `url(${categoryBackgroundImage(category.id)})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {superCategories.map((superCat) => {
+              const subCats = categories.filter((c) => c.superCategoryId === superCat.id)
+              return (
+                <Link
+                  key={superCat.id}
+                  to="/products"
+                  search={{ superCategory: superCat.id }}
+                  className="group block"
                 >
-                  <div className="absolute inset-0 bg-black/50 group-hover:bg-black/35 transition" />
-                  <p className="relative z-10 text-xl font-extrabold text-white">
-                    {category.name}
-                  </p>
-                </div>
-              </Link>
-            ))}
+                  <div
+                    className="relative min-h-[320px] p-8 rounded-2xl transition-all duration-500 cursor-pointer overflow-hidden flex flex-col justify-end border border-zinc-100 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-1"
+                    style={{
+                      backgroundImage: `url(${superCategoryBackgroundImage(superCat.id)})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/50 to-zinc-950/20 group-hover:from-zinc-950/95 group-hover:via-zinc-950/60 transition-all duration-300" />
+                    
+                    <div className="relative z-10">
+                      <h3 className="text-2xl font-black text-white mb-2 tracking-tight group-hover:text-primary transition-colors">
+                        {superCat.name}
+                      </h3>
+                      <p className="text-xs text-zinc-300 mb-4 line-clamp-2 leading-relaxed font-medium">
+                        {superCat.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-1.5 opacity-90 mt-2">
+                        {subCats.map((cat) => (
+                          <span key={cat.id} className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-white/10 hover:bg-white/20 text-white rounded-md backdrop-blur-xs transition">
+                            {cat.name}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
           <div className="text-center">
             <Link

@@ -7,9 +7,28 @@ export const company = {
   website: 'chillwaves.com.np',
 }
 
+export const superCategories = [
+  {
+    id: 'heating_cooling',
+    name: 'Heating & Cooling',
+    description: 'Precision evaporators, condensers, heaters, and air conditioning systems.',
+  },
+  {
+    id: 'air_moving',
+    name: 'Air Moving',
+    description: 'Industrial ventilation fans, air curtains, and clean air systems.',
+  },
+  {
+    id: 'speciality_hvac_parts',
+    name: 'Speciality HVAC & Parts',
+    description: 'Dehumidifiers, valves, controls, copper piping, and refrigerants.',
+  },
+]
+
 export const categories = [
   {
     id: 'cat_01',
+    superCategoryId: 'heating_cooling',
     name: 'Evaporators',
     subcategories: [
       {
@@ -757,6 +776,7 @@ export const categories = [
   },
   {
     id: 'cat_02',
+    superCategoryId: 'heating_cooling',
     name: 'Condensing Units',
     subcategories: [
       {
@@ -1060,6 +1080,7 @@ export const categories = [
   },
   {
     id: 'cat_03',
+    superCategoryId: 'heating_cooling',
     name: 'Condensers',
     subcategories: [
       {
@@ -1546,6 +1567,7 @@ export const categories = [
   },
   {
     id: 'cat_04',
+    superCategoryId: 'air_moving',
     name: 'Fans & Ventilation',
     subcategories: [
       {
@@ -2359,6 +2381,7 @@ export const categories = [
   },
   {
     id: 'cat_05',
+    superCategoryId: 'air_moving',
     name: 'Fresh Air & Heat Recovery Units',
     subcategories: [
       {
@@ -2725,6 +2748,7 @@ export const categories = [
   },
   {
     id: 'cat_06',
+    superCategoryId: 'air_moving',
     name: 'Air Curtains',
     subcategories: [
       {
@@ -3175,6 +3199,7 @@ export const categories = [
   },
   {
     id: 'cat_07',
+    superCategoryId: 'heating_cooling',
     name: 'Portable Air Conditioners',
     subcategories: [
       {
@@ -3242,6 +3267,7 @@ export const categories = [
   },
   {
     id: 'cat_08',
+    superCategoryId: 'speciality_hvac_parts',
     name: 'Dehumidifiers',
     subcategories: [
       {
@@ -3294,6 +3320,7 @@ export const categories = [
   },
   {
     id: 'cat_09',
+    superCategoryId: 'heating_cooling',
     name: 'Industrial Heaters',
     subcategories: [
       {
@@ -3416,7 +3443,8 @@ export const categories = [
     ],
   },
   {
-    id: 'cat_06',
+    id: 'cat_10',
+    superCategoryId: 'speciality_hvac_parts',
     name: 'Refrigerants',
     subcategories: [
       {
@@ -3447,7 +3475,8 @@ export const categories = [
     ]
   },
   {
-    id: 'cat_07',
+    id: 'cat_11',
+    superCategoryId: 'speciality_hvac_parts',
     name: 'Copper & Brazing',
     subcategories: [
       {
@@ -3468,7 +3497,8 @@ export const categories = [
     ]
   },
   {
-    id: 'cat_08',
+    id: 'cat_12',
+    superCategoryId: 'speciality_hvac_parts',
     name: 'Valves & Controls',
     subcategories: [
       {
