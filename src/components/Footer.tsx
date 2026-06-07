@@ -64,6 +64,14 @@ export function Footer() {
               Contact
             </h3>
             <ul className="space-y-3 text-sm text-gray-300">
+              {company.address && (
+                <li className="flex flex-col">
+                  <span className="text-[10px] uppercase opacity-50">
+                    Address
+                  </span>
+                  <span className="text-gray-300">{company.address}</span>
+                </li>
+              )}
               <li className="flex flex-col">
                 <span className="text-[10px] uppercase opacity-50">Email</span>
                 <a

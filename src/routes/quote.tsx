@@ -1,5 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
 
+import { Footer } from '@/components/Footer'
+import { Header } from '@/components/Header'
+import { company, categories, superCategories } from '@/data/products'
+import { useState } from 'react'
+
 export const Route = createFileRoute('/quote')({
   head: () => {
     const title = 'Get a Quote | Chill Wave'
@@ -27,11 +32,6 @@ export const Route = createFileRoute('/quote')({
   },
   component: RouteComponent,
 })
-
-import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
-import { company, categories, superCategories } from '@/data/products'
-import { useState } from 'react'
 
 function RouteComponent() {
   const [formData, setFormData] = useState({
@@ -86,7 +86,8 @@ function RouteComponent() {
               Get a Quote
             </h1>
             <p className="text-lg text-muted-foreground mt-4">
-              Let us help you find the perfect refrigeration and thermal engineering solution for your needs
+              Let us help you find the perfect refrigeration and thermal
+              engineering solution for your needs
             </p>
           </div>
         </section>
@@ -182,7 +183,9 @@ function RouteComponent() {
               >
                 <option value="">Select a category</option>
                 {superCategories.map((superCat) => {
-                  const subCats = categories.filter((cat) => cat.superCategoryId === superCat.id)
+                  const subCats = categories.filter(
+                    (cat) => cat.superCategoryId === superCat.id,
+                  )
                   return (
                     <optgroup key={superCat.id} label={superCat.name}>
                       {subCats.map((cat) => (
@@ -221,7 +224,15 @@ function RouteComponent() {
           </form>
 
           {/* Additional Info */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            className={`mt-12 grid grid-cols-1 ${company.address ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-6`}
+          >
+            {company.address && (
+              <div className="text-center">
+                <h3 className="font-bold text-foreground mb-2">Address</h3>
+                <p className="text-muted-foreground">{company.address}</p>
+              </div>
+            )}
             <div className="text-center">
               <h3 className="font-bold text-foreground mb-2">Email</h3>
               <p className="text-muted-foreground">{company.email}</p>

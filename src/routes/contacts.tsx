@@ -28,7 +28,9 @@ export const Route = createFileRoute('/contacts')({
 })
 
 function ContactsPage() {
-  const emailList = Array.isArray(company.email) ? company.email : [company.email]
+  const emailList = Array.isArray(company.email)
+    ? company.email
+    : [company.email]
 
   return (
     <>
@@ -36,29 +38,43 @@ function ContactsPage() {
       <main>
         <section className="bg-secondary border-b border-border py-14">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-5xl font-black text-foreground mb-4">Contacts</h1>
+            <h1 className="text-5xl font-black text-foreground mb-4">
+              Contacts
+            </h1>
             <p className="text-lg text-muted-foreground max-w-3xl">
-              Reach our team for product consultation, installation guidance, maintenance planning, or business inquiries.
+              Reach our team for product consultation, installation guidance,
+              maintenance planning, or business inquiries.
             </p>
           </div>
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="rounded-2xl bg-white border border-border p-8">
               <h2 className="text-xl font-bold mb-2">Email</h2>
               {emailList.map((email) => (
-                <p key={email} className="text-muted-foreground mb-1">{email}</p>
+                <p key={email} className="text-muted-foreground mb-1">
+                  {email}
+                </p>
               ))}
             </div>
+            {company.address && (
+              <div className="rounded-2xl bg-white border border-border p-8">
+                <h2 className="text-xl font-bold mb-2">Office Address</h2>
+                <p className="text-muted-foreground">{company.address}</p>
+              </div>
+            )}
           </div>
         </section>
 
         <section className="py-20 bg-zinc-950">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl font-bold text-white mb-4">Need a Fast Response?</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Need a Fast Response?
+            </h2>
             <p className="text-zinc-300 text-lg mb-8">
-              Send your project requirements and we&apos;ll respond with tailored recommendations.
+              Send your project requirements and we&apos;ll respond with
+              tailored recommendations.
             </p>
             <Link
               to="/quote"

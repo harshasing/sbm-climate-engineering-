@@ -3,7 +3,7 @@ export const services = [
     id: '1',
     title: 'Thermal Consultation',
     description:
-      "Expert guidance for designing the perfect cold storage solution tailored to your specific temperature and volume requirements.",
+      'Expert guidance for designing the perfect cold storage solution tailored to your specific temperature and volume requirements.',
   },
   {
     id: '2',

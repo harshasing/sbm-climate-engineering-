@@ -42,16 +42,24 @@ export const Route = createFileRoute('/products/')({
   component: RouteComponent,
 })
 
- function ProductsContent() {
-  const { superCategory: selectedSuperCategory, category: selectedCategory, page = 1, q: searchItem } = Route.useSearch()
+function ProductsContent() {
+  const {
+    superCategory: selectedSuperCategory,
+    category: selectedCategory,
+    page = 1,
+    q: searchItem,
+  } = Route.useSearch()
   const navigate = useNavigate({ from: Route.fullPath })
   const pageSize = 12
 
   const filteredProducts = products.filter((p) => {
     const matchesSuperCategory = selectedSuperCategory
-      ? categories.find((c) => c.id === p.categoryId)?.superCategoryId === selectedSuperCategory
+      ? categories.find((c) => c.id === p.categoryId)?.superCategoryId ===
+        selectedSuperCategory
       : true
-    const matchesCategory = selectedCategory ? p.categoryId === selectedCategory : true
+    const matchesCategory = selectedCategory
+      ? p.categoryId === selectedCategory
+      : true
     const matchesSearch = searchItem
       ? p.name.toLowerCase().includes(searchItem.toLowerCase()) ||
         p.description.toLowerCase().includes(searchItem.toLowerCase()) ||
@@ -81,7 +89,7 @@ export const Route = createFileRoute('/products/')({
                 Technical precision and engineering excellence.
               </p>
             </div>
-            
+
             <div className="relative w-full md:w-80">
               <input
                 type="text"
@@ -91,14 +99,28 @@ export const Route = createFileRoute('/products/')({
                   if (e.key === 'Enter') {
                     const value = (e.target as HTMLInputElement).value
                     navigate({
-                      search: (prev: any) => ({ ...prev, q: value || undefined, page: 1 }),
+                      search: (prev: any) => ({
+                        ...prev,
+                        q: value || undefined,
+                        page: 1,
+                      }),
                     })
                   }
                 }}
                 className="w-full bg-zinc-50 border-none rounded-2xl px-6 py-3 text-sm focus:ring-1 focus:ring-primary outline-none transition-all"
               />
-              <svg className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-300 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              <svg
+                className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-300 pointer-events-none"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
               </svg>
             </div>
           </div>
@@ -111,7 +133,11 @@ export const Route = createFileRoute('/products/')({
             <div className="flex flex-wrap items-center gap-3 pb-4">
               <Link
                 to="/products"
-                search={{ superCategory: undefined, category: undefined, page: 1 }}
+                search={{
+                  superCategory: undefined,
+                  category: undefined,
+                  page: 1,
+                }}
                 className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
                   !selectedSuperCategory && !selectedCategory
                     ? 'bg-zinc-950 text-white shadow-md'
@@ -124,7 +150,11 @@ export const Route = createFileRoute('/products/')({
                 <Link
                   key={sc.id}
                   to="/products"
-                  search={{ superCategory: sc.id, category: undefined, page: 1 }}
+                  search={{
+                    superCategory: sc.id,
+                    category: undefined,
+                    page: 1,
+                  }}
                   className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
                     selectedSuperCategory === sc.id && !selectedCategory
                       ? 'bg-primary text-primary-foreground shadow-md'
@@ -141,17 +171,19 @@ export const Route = createFileRoute('/products/')({
               <span className="text-[10px] font-extrabold uppercase tracking-widest text-zinc-400 mr-2">
                 Sub-Filters:
               </span>
-              {(selectedSuperCategory 
-                ? categories.filter(c => c.superCategoryId === selectedSuperCategory)
+              {(selectedSuperCategory
+                ? categories.filter(
+                    (c) => c.superCategoryId === selectedSuperCategory,
+                  )
                 : categories
               ).map((cat) => (
                 <Link
                   key={cat.id}
                   to="/products"
-                  search={{ 
-                    superCategory: cat.superCategoryId, 
-                    category: cat.id, 
-                    page: 1 
+                  search={{
+                    superCategory: cat.superCategoryId,
+                    category: cat.id,
+                    page: 1,
                   }}
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 border ${
                     selectedCategory === cat.id
@@ -165,10 +197,10 @@ export const Route = createFileRoute('/products/')({
               {selectedCategory && (
                 <Link
                   to="/products"
-                  search={{ 
-                    superCategory: selectedSuperCategory, 
-                    category: undefined, 
-                    page: 1 
+                  search={{
+                    superCategory: selectedSuperCategory,
+                    category: undefined,
+                    page: 1,
                   }}
                   className="text-xs font-bold text-red-500 hover:text-red-700 transition-colors pl-2"
                 >
@@ -186,12 +218,22 @@ export const Route = createFileRoute('/products/')({
               {paginatedProducts.map((product) => {
                 const specs = []
                 if (product.series) {
-                  specs.push({ label: 'Variants', value: `${product.series.length} Series` })
+                  specs.push({
+                    label: 'Variants',
+                    value: `${product.series.length} Series`,
+                  })
                 } else if (product.products) {
-                  specs.push({ label: 'Models', value: `${product.products.length} Units` })
+                  specs.push({
+                    label: 'Models',
+                    value: `${product.products.length} Units`,
+                  })
                 }
-                
-                if (product.refrigerant) specs.push({ label: 'Refrigerant', value: product.refrigerant })
+
+                if (product.refrigerant)
+                  specs.push({
+                    label: 'Refrigerant',
+                    value: product.refrigerant,
+                  })
 
                 return (
                   <ProductCard
@@ -218,15 +260,20 @@ export const Route = createFileRoute('/products/')({
             <div className="mt-32 flex justify-center items-center gap-8">
               <Link
                 to="/products"
-                search={(prev: any) => ({ ...prev, page: Math.max(1, (prev.page || 1) - 1) })}
+                search={(prev: any) => ({
+                  ...prev,
+                  page: Math.max(1, (prev.page || 1) - 1),
+                })}
                 disabled={page === 1}
                 className={`text-xs font-bold uppercase tracking-widest ${
-                  page === 1 ? 'opacity-20 cursor-not-allowed' : 'hover:text-primary'
+                  page === 1
+                    ? 'opacity-20 cursor-not-allowed'
+                    : 'hover:text-primary'
                 }`}
               >
                 Prev
               </Link>
-              
+
               <div className="flex gap-4">
                 {[...Array(totalPages)].map((_, i) => (
                   <Link
@@ -234,7 +281,9 @@ export const Route = createFileRoute('/products/')({
                     to="/products"
                     search={(prev: any) => ({ ...prev, page: i + 1 })}
                     className={`text-xs font-bold ${
-                      page === i + 1 ? 'text-primary underline underline-offset-8' : 'text-zinc-300 hover:text-zinc-500'
+                      page === i + 1
+                        ? 'text-primary underline underline-offset-8'
+                        : 'text-zinc-300 hover:text-zinc-500'
                     }`}
                   >
                     {i + 1}
@@ -244,10 +293,15 @@ export const Route = createFileRoute('/products/')({
 
               <Link
                 to="/products"
-                search={(prev: any) => ({ ...prev, page: Math.min(totalPages, (prev.page || 1) + 1) })}
+                search={(prev: any) => ({
+                  ...prev,
+                  page: Math.min(totalPages, (prev.page || 1) + 1),
+                })}
                 disabled={page === totalPages}
                 className={`text-xs font-bold uppercase tracking-widest ${
-                  page === totalPages ? 'opacity-20 cursor-not-allowed' : 'hover:text-primary'
+                  page === totalPages
+                    ? 'opacity-20 cursor-not-allowed'
+                    : 'hover:text-primary'
                 }`}
               >
                 Next

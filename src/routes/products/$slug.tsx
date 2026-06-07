@@ -4,6 +4,8 @@ import { ProductCard } from '@/components/ProductCard'
 import { products } from '@/data/products'
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 
+import { ImageCarousel } from '@/components/ImageCarousel'
+
 export const Route = createFileRoute('/products/$slug')({
   loader: ({ params }) => {
     const product = products.find((p) => p.slug === params.slug)
@@ -28,7 +30,8 @@ export const Route = createFileRoute('/products/$slug')({
 
     const title = `${product.name} | ${product.category} | Chill Wave`
     const description = product.description
-    const image = (product.images && product.images[0]) || product.image || '/logo.webp'
+    const image =
+      (product.images && product.images[0]) || product.image || '/logo.webp'
     const urlPath = `/products/${params.slug}`
 
     return {
@@ -54,7 +57,10 @@ export const Route = createFileRoute('/products/$slug')({
             '@type': 'Product',
             name: product.name,
             description: product.description,
-            image: product.images && product.images.length > 0 ? product.images : [image],
+            image:
+              product.images && product.images.length > 0
+                ? product.images
+                : [image],
             category: product.category,
             brand: { '@type': 'Brand', name: 'Chill Wave' },
             url: urlPath,
@@ -65,8 +71,6 @@ export const Route = createFileRoute('/products/$slug')({
   },
   component: RouteComponent,
 })
-
-import { ImageCarousel } from '@/components/ImageCarousel'
 
 function RouteComponent() {
   const { product, relatedProducts } = Route.useLoaderData()
@@ -117,12 +121,14 @@ function RouteComponent() {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-2">
                   {product.name}
                 </h1>
-                <Link 
-                  to="/about" 
+                <Link
+                  to="/about"
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary uppercase tracking-widest hover:opacity-80 transition-opacity mb-8 group"
                 >
                   Part of the Chill Wave™ Series
-                  <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+                  <span className="group-hover:translate-x-0.5 transition-transform">
+                    →
+                  </span>
                 </Link>
                 <p className="text-xl text-muted-foreground leading-relaxed">
                   {product.description}
@@ -148,10 +154,14 @@ function RouteComponent() {
               product.series.map((s: any) => (
                 <div key={s.id} className="space-y-6">
                   <div className="flex flex-col border-l-4 border-primary pl-6">
-                    <h3 className="text-2xl font-bold text-foreground">{s.name}</h3>
+                    <h3 className="text-2xl font-bold text-foreground">
+                      {s.name}
+                    </h3>
                     <p className="text-muted-foreground mt-1">
-                      {s.temperature_range && `Operating Range: ${s.temperature_range}`} 
-                      {s.fin_spacing_mm && ` • Fin Spacing: ${s.fin_spacing_mm}mm`} 
+                      {s.temperature_range &&
+                        `Operating Range: ${s.temperature_range}`}
+                      {s.fin_spacing_mm &&
+                        ` • Fin Spacing: ${s.fin_spacing_mm}mm`}
                       {s.refrigerant && ` • Refrigerant: ${s.refrigerant}`}
                     </p>
                   </div>
@@ -160,22 +170,39 @@ function RouteComponent() {
                       <thead className="bg-zinc-50 text-zinc-900 font-bold border-b border-border">
                         <tr>
                           <th className="px-4 py-2">Model</th>
-                          {s.products && s.products.length > 0 && Object.keys(s.products[0]).filter(k => !['model', 'id'].includes(k)).map(key => (
-                            <th key={key} className="px-4 py-2 capitalize whitespace-nowrap">
-                              {key.replace(/_/g, ' ')}
-                            </th>
-                          ))}
+                          {s.products &&
+                            s.products.length > 0 &&
+                            Object.keys(s.products[0])
+                              .filter((k) => !['model', 'id'].includes(k))
+                              .map((key) => (
+                                <th
+                                  key={key}
+                                  className="px-4 py-2 capitalize whitespace-nowrap"
+                                >
+                                  {key.replace(/_/g, ' ')}
+                                </th>
+                              ))}
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-border">
                         {s.products?.map((p: any) => (
-                          <tr key={p.model} className="hover:bg-zinc-50/50 transition-colors">
-                            <td className="px-4 py-2 font-mono font-bold text-primary text-xs">{p.model}</td>
-                            {Object.entries(p).filter(([k]) => !['model', 'id'].includes(k)).map(([_, v]) => (
-                              <td key={_} className="px-4 py-2 whitespace-nowrap font-medium text-zinc-600 text-xs">
-                                {String(v)}
-                              </td>
-                            ))}
+                          <tr
+                            key={p.model}
+                            className="hover:bg-zinc-50/50 transition-colors"
+                          >
+                            <td className="px-4 py-2 font-mono font-bold text-primary text-xs">
+                              {p.model}
+                            </td>
+                            {Object.entries(p)
+                              .filter(([k]) => !['model', 'id'].includes(k))
+                              .map(([_, v]) => (
+                                <td
+                                  key={_}
+                                  className="px-4 py-2 whitespace-nowrap font-medium text-zinc-600 text-xs"
+                                >
+                                  {String(v)}
+                                </td>
+                              ))}
                           </tr>
                         ))}
                       </tbody>
@@ -186,30 +213,50 @@ function RouteComponent() {
             ) : product.products ? (
               <div className="space-y-6">
                 <div className="flex flex-col border-l-4 border-primary pl-6">
-                  <h3 className="text-2xl font-bold text-foreground">Models & Specifications</h3>
-                  <p className="text-muted-foreground mt-1">Technical configuration and performance metrics</p>
+                  <h3 className="text-2xl font-bold text-foreground">
+                    Models & Specifications
+                  </h3>
+                  <p className="text-muted-foreground mt-1">
+                    Technical configuration and performance metrics
+                  </p>
                 </div>
                 <div className="overflow-x-auto rounded-[2rem] border border-border shadow-sm">
                   <table className="w-full text-left text-sm">
                     <thead className="bg-zinc-50 text-zinc-900 font-bold border-b border-border">
                       <tr>
                         <th className="px-4 py-2">Model</th>
-                        {product.products.length > 0 && Object.keys(product.products[0]).filter(k => !['model', 'id'].includes(k)).map(key => (
-                          <th key={key} className="px-4 py-2 capitalize whitespace-nowrap">
-                            {key.replace(/_/g, ' ')}
-                          </th>
-                        ))}
+                        {product.products.length > 0 &&
+                          Object.keys(product.products[0])
+                            .filter((k) => !['model', 'id'].includes(k))
+                            .map((key) => (
+                              <th
+                                key={key}
+                                className="px-4 py-2 capitalize whitespace-nowrap"
+                              >
+                                {key.replace(/_/g, ' ')}
+                              </th>
+                            ))}
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-border">
                       {product.products.map((p: any) => (
-                        <tr key={p.model} className="hover:bg-zinc-50/50 transition-colors">
-                          <td className="px-4 py-2 font-mono font-bold text-primary text-xs">{p.model}</td>
-                          {Object.entries(p).filter(([k]) => !['model', 'id'].includes(k)).map(([_, v]) => (
-                            <td key={_} className="px-4 py-2 whitespace-nowrap font-medium text-zinc-600 text-xs">
-                              {String(v)}
-                            </td>
-                          ))}
+                        <tr
+                          key={p.model}
+                          className="hover:bg-zinc-50/50 transition-colors"
+                        >
+                          <td className="px-4 py-2 font-mono font-bold text-primary text-xs">
+                            {p.model}
+                          </td>
+                          {Object.entries(p)
+                            .filter(([k]) => !['model', 'id'].includes(k))
+                            .map(([_, v]) => (
+                              <td
+                                key={_}
+                                className="px-4 py-2 whitespace-nowrap font-medium text-zinc-600 text-xs"
+                              >
+                                {String(v)}
+                              </td>
+                            ))}
                         </tr>
                       ))}
                     </tbody>
@@ -219,7 +266,6 @@ function RouteComponent() {
             ) : null}
           </div>
         </section>
-
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (

@@ -33,7 +33,7 @@ export const blogs: BlogPost[] = [
     excerpt:
       'Learn how to choose the right insulation materials for your industrial facility',
     content:
-      "Sustainability in refrigeration begins with superior insulation. Proper thermal barriers not only maintain consistent temperatures but also reduce the load on compressors, leading to lower maintenance costs and a smaller carbon footprint.",
+      'Sustainability in refrigeration begins with superior insulation. Proper thermal barriers not only maintain consistent temperatures but also reduce the load on compressors, leading to lower maintenance costs and a smaller carbon footprint.',
     category: 'Innovation',
     date: '2024-04-28',
     author: 'S.B.M. Technical Team',
@@ -44,9 +44,10 @@ export const blogs: BlogPost[] = [
     id: '3',
     slug: 'precision-cooling-in-pharmaceuticals',
     title: 'Precision Cooling in Pharmaceuticals',
-    excerpt: 'The critical role of stable temperature control in medicine storage',
+    excerpt:
+      'The critical role of stable temperature control in medicine storage',
     content:
-      "Pharmaceutical preservation requires absolute precision. Our DJ and DD series evaporators provide the stable, low-temperature environments necessary for vaccine and medicine storage, ensuring life-saving products remain effective.",
+      'Pharmaceutical preservation requires absolute precision. Our DJ and DD series evaporators provide the stable, low-temperature environments necessary for vaccine and medicine storage, ensuring life-saving products remain effective.',
     category: 'Pharma',
     date: '2024-04-25',
     author: 'Engineering Dept',

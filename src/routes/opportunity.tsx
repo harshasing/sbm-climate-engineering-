@@ -44,7 +44,9 @@ function OpportunityPage() {
               Opportunity
             </h1>
             <p className="max-w-3xl text-xl text-zinc-300 leading-relaxed">
-              Join our network of engineers, partners, and project teams to deliver high-performance cooling solutions across industrial and commercial sectors.
+              Join our network of engineers, partners, and project teams to
+              deliver high-performance cooling solutions across industrial and
+              commercial sectors.
             </p>
           </div>
         </section>
@@ -69,8 +71,12 @@ function OpportunityPage() {
                 key={item.title}
                 className="rounded-2xl border border-border bg-white p-8 hover:shadow-xl transition-shadow"
               >
-                <h2 className="text-2xl font-bold text-foreground mb-3">{item.title}</h2>
-                <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                <h2 className="text-2xl font-bold text-foreground mb-3">
+                  {item.title}
+                </h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  {item.desc}
+                </p>
               </article>
             ))}
           </div>
@@ -78,9 +84,12 @@ function OpportunityPage() {
 
         <section className="bg-secondary py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl font-bold text-foreground mb-4">Let&apos;s Build Together</h2>
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              Let&apos;s Build Together
+            </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Tell us how you want to collaborate, and our team will reach out with next steps.
+              Tell us how you want to collaborate, and our team will reach out
+              with next steps.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

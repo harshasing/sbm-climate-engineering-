@@ -44,8 +44,8 @@ function BlogPage() {
               Blog & Resources
             </h1>
             <p className="text-lg text-muted-foreground mt-4">
-              Learn about refrigeration technology, climate engineering, and industrial
-              cooling insights
+              Learn about refrigeration technology, climate engineering, and
+              industrial cooling insights
             </p>
           </div>
         </section>

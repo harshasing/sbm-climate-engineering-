@@ -85,4 +85,3 @@ export function ImageCarousel({ images, alt }: ImageCarouselProps) {
     </div>
   )
 }
-

@@ -275,6 +275,14 @@ function AboutPage() {
                 </p>
                 <p className="text-xl font-bold">{company.email}</p>
               </div>
+              {company.address && (
+                <div>
+                  <p className="text-xs uppercase tracking-widest opacity-50 mb-1">
+                    Office Address
+                  </p>
+                  <p className="text-xl font-bold">{company.address}</p>
+                </div>
+              )}
             </div>
             <a
               href="/quote"

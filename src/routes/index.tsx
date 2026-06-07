@@ -53,9 +53,13 @@ function Home() {
   }
 
   const superCategoryBackgroundImage = (superCategoryId: string) => {
-    const subCats = categories.filter((c) => c.superCategoryId === superCategoryId)
+    const subCats = categories.filter(
+      (c) => c.superCategoryId === superCategoryId,
+    )
     const categoryIds = subCats.map((c) => c.id)
-    const superCatProducts = products.filter((p) => categoryIds.includes(p.categoryId))
+    const superCatProducts = products.filter((p) =>
+      categoryIds.includes(p.categoryId),
+    )
     if (!superCatProducts.length) return '/logo.webp'
 
     const seed = superCategoryId
@@ -221,7 +225,9 @@ function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {superCategories.map((superCat) => {
-              const subCats = categories.filter((c) => c.superCategoryId === superCat.id)
+              const subCats = categories.filter(
+                (c) => c.superCategoryId === superCat.id,
+              )
               return (
                 <Link
                   key={superCat.id}
@@ -238,7 +244,7 @@ function Home() {
                     }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/50 to-zinc-950/20 group-hover:from-zinc-950/95 group-hover:via-zinc-950/60 transition-all duration-300" />
-                    
+
                     <div className="relative z-10">
                       <h3 className="text-2xl font-black text-white mb-2 tracking-tight group-hover:text-primary transition-colors">
                         {superCat.name}
@@ -246,10 +252,13 @@ function Home() {
                       <p className="text-xs text-zinc-300 mb-4 line-clamp-2 leading-relaxed font-medium">
                         {superCat.description}
                       </p>
-                      
+
                       <div className="flex flex-wrap gap-1.5 opacity-90 mt-2">
                         {subCats.map((cat) => (
-                          <span key={cat.id} className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-white/10 hover:bg-white/20 text-white rounded-md backdrop-blur-xs transition">
+                          <span
+                            key={cat.id}
+                            className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-white/10 hover:bg-white/20 text-white rounded-md backdrop-blur-xs transition"
+                          >
                             {cat.name}
                           </span>
                         ))}
